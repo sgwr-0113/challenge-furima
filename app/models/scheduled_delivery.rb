@@ -1,0 +1,2 @@
+class ScheduledDelivery < ApplicationRecord
+end
