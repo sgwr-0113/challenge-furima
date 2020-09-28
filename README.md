@@ -15,7 +15,7 @@
 
 ### Association
 * has_many :items
-* has_many :item_transactions
+* has_many :orders
 
 
 ## items
@@ -34,14 +34,13 @@
 
 ### Association
 * belongs_to :user
-* has_one :item_transaction
+* has_one :order
 
-
-## item_transactions
+## orders
 | Column | Type | Options |
 |--------|------|---------|
-| item_id(FK) | integer | foreign_key: true |
-| user_id(FK) | integer | foreign_key: true |
+| item_id(FK) | references | foreign_key: true |
+| user_id(FK) | references | foreign_key: true |
 
 ### Association
 * belongs_to :user
@@ -58,7 +57,7 @@
 | address      | string  | null: false       |
 | building     | string  |                   |
 | phone_number | string  | null: false       |
-| item_transaction_id(FK)  | integer | foreign_key: true |
+| order_id(FK)  | integer | foreign_key: true |
 
 ### Association
-* belongs_to :item_transaction
+* belongs_to :order
