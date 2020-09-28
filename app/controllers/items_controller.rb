@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
   end
 
@@ -7,12 +8,18 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.valid?
+      @item.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   private
   def item_params
-    params.requre(:item).permit(
+    params.require(:item).permit(
       :image,
       :name,
       :price,
