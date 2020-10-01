@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
+    return redirect_to root_path if current_user.id == select_item.user_id || select_item.order
   end
 
   def create
