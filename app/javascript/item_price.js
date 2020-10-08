@@ -1,7 +1,5 @@
-window.addEventListener("DOMContentLoaded", ()=> {
-
-  if (location.pathname === "/items/new" || "/items/edit") {
-    // console.log(location.pathname);
+if (document.URL.match( /orders/ )) {
+  window.addEventListener("DOMContentLoaded", ()=> {
     const priceInput = document.getElementById("item-price");
     const addTaxDom = document.getElementById("add-tax-price");
     const profitDom = document.getElementById("profit");
@@ -15,5 +13,5 @@ window.addEventListener("DOMContentLoaded", ()=> {
         profitDom.innerHTML = Math.floor(inputValue * 0.9).toLocaleString();
       } 
     });
-  }
-});
+  });
+}
