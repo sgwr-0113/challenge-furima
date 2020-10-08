@@ -10,7 +10,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :sales_status_id, null: false
       t.integer :category_id, null: false
       t.integer :user_id, foreign_key: true
-
       t.timestamps
     end
   end
