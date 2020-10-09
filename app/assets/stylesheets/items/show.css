@@ -206,10 +206,18 @@
 
 }
 
-.change-item-btn {
+.change-item-btn-next {
   font-size: 30px;
   text-decoration: none;
   color: #3CCACE;
+  float: left;
+}
+
+.change-item-btn-previous {
+  font-size: 30px;
+  text-decoration: none;
+  color: #3CCACE;
+  float: right;
 }
 
 .another-item {
