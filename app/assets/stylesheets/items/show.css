@@ -102,6 +102,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .favorite-btn {
@@ -137,6 +138,21 @@
   margin-right: 5px;
 }
 
+.comments-container {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+}
+
+.comment {
+  width: 94%;
+  margin: 0 auto;
+  padding: 0 20px;
+  line-height: 30px;
+  margin-top: 25px;
+  border-left: 5px solid #3CCACE;
+}
 
 /* /商品の概要 */
 
