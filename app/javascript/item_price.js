@@ -1,4 +1,4 @@
-if (document.URL.match( /orders/ )) {
+if (document.URL.match( /items/ && ( /new/ || /edit/ ))) {
   window.addEventListener("DOMContentLoaded", ()=> {
     const priceInput = document.getElementById("item-price");
     const addTaxDom = document.getElementById("add-tax-price");
