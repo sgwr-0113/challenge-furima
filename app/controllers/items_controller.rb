@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params) if current_user.id == @item.user_id
+    return redirect_to item_path if @item.valid?
     render 'edit'
   end
 
@@ -42,7 +43,6 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(
-      :image,
       :name,
       :price,
       :info,
@@ -50,7 +50,8 @@ class ItemsController < ApplicationController
       :shipping_fee_status_id,
       :prefecture_id,
       :sales_status_id,
-      :category_id      
+      :category_id,
+      {images: []}     
     ).merge(user_id: current_user.id)
   end
 

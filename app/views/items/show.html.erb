@@ -7,7 +7,7 @@
       <%= @item.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img" %>
+      <%= image_tag @item.images[0] ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <% if @item.order %>
         <div class='sold-out'>
@@ -15,6 +15,11 @@
         </div>
       <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
+    </div>
+    <div id='item-mini-images' style="display:flex;">
+      <% @item.images[1..-1].each do |image|%>
+        <%= image_tag image.variant(resize:'300x300')%>
+      <%end%>
     </div>
     <div class="item-price-box">
       <span class="item-price">
