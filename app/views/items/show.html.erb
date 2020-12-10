@@ -1,3 +1,4 @@
+<% breadcrumb :show_item, @item %>
 <%= render "shared/header" %>
 
 <%# 商品の概要 %>
@@ -31,16 +32,15 @@
     </div>
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-    <% if user_signed_in? && current_user.id == @item.user_id%>
-      <%= link_to '商品の編集', edit_item_path(@item.id) , method: :get, class: "item-red-btn" %>
-      <p class='or-text'>or</p>
-      <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
-    <% else %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <% if @item.order == nil %>
-      <%= link_to '購入画面に進む', item_orders_path(item_id: @item.id) ,class:"item-red-btn"%>
-    <% end %>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
+    <% if user_signed_in? && @item.order == nil%>
+      <% if current_user.id == @item.user_id %>
+        <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+        <p class='or-text'>or</p>
+        <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+      <% else %>
+        <%= link_to '購入画面に進む（新しくカードを登録する）', item_orders_path(item_id: @item.id) ,class:"item-red-btn"%>
+        <%= link_to '購入画面に進む（カード登録済み）', purchase_confirm_item_path(item_id: @item.id) ,class:"item-red-btn"%>
+      <% end %>
     <% end %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
@@ -57,6 +57,10 @@
         <tr>
           <th class="detail-item">カテゴリー</th>
           <td class="detail-value"><%= @item.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">タグ</th>
+          <td class="detail-value"><%= @item.tags&.first&.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
@@ -98,14 +102,17 @@
   <%# /商品の概要 %>
     
   <div class="comment-box">
-    <%= form_with(model: [@item, @comment], local: true) do |f| %>
+    <%= form_with model: [@item, @comment] do |f| %>
       <%= f.text_area :text, class: "comment-text" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <%= f.submit 'コメントする', class: "comment-btn" %>
+      <%= f.button type: 'submit', class: "comment-btn" do %>
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      <% end %>
     <% end %>
     
     <%# <form>
@@ -124,7 +131,7 @@
   <div class="links">
     <div class="link-left">
       <% if @item.next.present? %>
-        <%= link_to '◀︎', item_path(@item.next), class: "change-item-btn-previous" %>
+        <%= link_to '◀︎', item_path(@item.next), class: "change-item-btn-next" %>
       <% end %>
     </div>
     <div class="link-right">

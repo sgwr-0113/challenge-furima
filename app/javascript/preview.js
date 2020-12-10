@@ -48,11 +48,11 @@ window.addEventListener("DOMContentLoaded", () => {
     // 新しいfile_fieldを生成
     const newFileField = document.createElement("input");
     newFileField.setAttribute("type", "file");
-    newFileField.setAttribute("name", "item[images][]");
+    newFileField.setAttribute("name", "item_form[images][]");
 
     // ---file_fieldにdata-indexを設定ここから---
     // 最後のfile_fieldを取得
-    const lastFileField = document.querySelector('input[type="file"][name="item[images][]"]:last-child')
+    const lastFileField = document.querySelector('input[type="file"][name="item_form[images][]"]:last-child')
     console.log("lastfilefield:", lastFileField);
     // nextDataIndex = 最後のfile_fieldのdata-index + 1
     const nextDataIndex = Number(lastFileField.getAttribute("data-index")) + 1;
@@ -129,7 +129,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 画像のfile_field
   const fileField = document.querySelector(
-    'input[type="file"][name="item[images][]"]'
+    'input[type="file"][name="item_form[images][]"]'
   );
 
   // 画像のfile_fieldの内容が変化（新しく選択、もしくは消える）したら発火するイベント

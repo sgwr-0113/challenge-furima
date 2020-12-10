@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   def create
+    @item = Item.find(params[:item_id]) 
     @comment = Comment.new(comment_params)
     if @comment.save
-      ActionCable.server.broadcast 'comment_channel', content: @comment, user: @comment.user
+      CommentsChannel.broadcast_to @item, {comment: @comment, user: @comment.user}
     end
   end
 

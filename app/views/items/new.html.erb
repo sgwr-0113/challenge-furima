@@ -1,1 +1,2 @@
-<%= render 'form' %>
+<% breadcrumb :new_item %>
+<%= render partial: 'form', locals: {url: items_path, method: :post} %>

@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // カード登録用フォームがないならここで終了する
   if (!form) return false;
 
-  console.log("create_token.js");
+
 
   const PAYJP_PK = process.env.PAYJP_PK;
   Payjp.setPublicKey(PAYJP_PK);

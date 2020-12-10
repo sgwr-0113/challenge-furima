@@ -55,7 +55,7 @@ group :test do
 end
 
 group :production do
-  gem 'rails_12factor'
+  gem 'unicorn', '5.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -67,3 +67,10 @@ gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem "aws-sdk-s3", require: false
 gem "mini_magick"
+gem 'pry-rails'
+gem "rails-i18n"
+gem "gretel"
+gem 'ransack'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"

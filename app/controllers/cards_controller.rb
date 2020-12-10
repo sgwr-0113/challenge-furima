@@ -1,4 +1,7 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :create, :destroy]
+  before_action :current_user_has_card, only: [:new, :create]
+
   def index
     ## カードが登録されていないならここで終了
     return unless current_user.card.present?
@@ -18,13 +21,11 @@ class CardsController < ApplicationController
     description: 'test', # テストカードであることを説明
     card: params[:token] # 登録しようとしているカード情報
     )
-
     card = Card.new( # トークン化されたカード情報を保存する
       card_token: customer.default_card, # カードトークン
       customer_token: customer.id, # 顧客トークン
       user_id: current_user.id # ログインしているユーザー
     )
-
     if card.save
       redirect_to cards_path
     else
@@ -39,4 +40,11 @@ class CardsController < ApplicationController
       redirect_to cards_path, alert: "クレジットカードの削除に失敗しました"
     end
   end
+
+  private
+
+  def current_user_has_card
+    redirect_to cards_path, alert: "既にクレジットカードを登録済みです" if current_user.card
+  end
+  
 end

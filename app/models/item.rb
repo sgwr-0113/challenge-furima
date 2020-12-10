@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   has_many_attached :images
   has_one :order
   has_many :comments
+  has_many :item_tag_relations, dependent: :destroy
+  has_many :tags, through: :item_tag_relations
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :scheduled_delivery
@@ -18,16 +20,10 @@ class Item < ApplicationRecord
     validates :info
   end
 
-  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than: 10000000 , message: 'Out of setting range' }
-  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than: 10000000 , message: 'は300円以上1000万円未満の範囲で入力してください' }
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください' }
 
-  with_options presence: true, numericality: { other_than: 0, message: 'Select' }  do
-    validates :scheduled_delivery_id
-    validates :shipping_fee_status_id
-    validates :prefecture_id
-    validates :sales_status_id
-    validates :category_id
-  end
+
 
   def previous
     Item.where("id < ?", self.id).order("id DESC").first
