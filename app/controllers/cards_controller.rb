@@ -27,7 +27,7 @@ class CardsController < ApplicationController
       user_id: current_user.id # ログインしているユーザー
     )
     if card.save
-      redirect_to cards_path
+      redirect_to user_path(current_user.id)
     else
       redirect_to new_card_path
     end
@@ -35,16 +35,16 @@ class CardsController < ApplicationController
 
   def destroy
     if current_user.card.destroy
-      redirect_to cards_path, notice: "クレジットカードの削除が完了しました"
+      redirect_to user_path(current_user.id), notice: "クレジットカードの削除が完了しました"
     else
-      redirect_to cards_path, alert: "クレジットカードの削除に失敗しました"
+      redirect_to user_path(current_user.id), alert: "クレジットカードの削除に失敗しました"
     end
   end
 
   private
 
   def current_user_has_card
-    redirect_to cards_path, alert: "既にクレジットカードを登録済みです" if current_user.card
+    redirect_to user_path(current_user.id), alert: "既にクレジットカードを登録済みです" if current_user.card
   end
   
 end

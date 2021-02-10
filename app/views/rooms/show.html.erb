@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+
+<div class="dm-wrapper">
+  <h1 class="dm-title"><a href="/users/<%= @opponent_entry[0].user_id %>"><%= @opponent_entry[0].user.nickname %>さん</a>とのメッセージ</h1>
+  <div id="messages">
+    <% if @messages.present? %>
+      <% @messages.each do |m| %>
+      <% if current_user.id == m.user_id %>
+        <div class="mine">
+        <p class="my-message"><%= m.text %></p>
+        <br>
+        <small><p class="my-name"> あなた</p></small>
+        </div>
+      <% else %>
+        <div class="his">
+        <p class="his-message"><%= m.text %></p>
+        <br>
+        <small><p class="his-name"> <a href="/users/<%= m.user_id %>"><%= m.user.nickname %></a></p></small>
+        </div>
+      <% end %>
+      <% end %>
+    <% else %>
+      <p id="default-message">メッセージはまだありません</p>
+    <% end %>
+  </div>
+  <%= form_with model: @message, class: "message-form" do |f| %>
+    <%= f.text_field :text, class: "message-content-field", placeholder: "メッセージを入力して下さい" , size: 70 %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "送信", id: "message-send-btn" %>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>

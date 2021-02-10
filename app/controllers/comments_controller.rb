@@ -3,7 +3,16 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id]) 
     @comment = Comment.new(comment_params)
     if @comment.save
-      CommentsChannel.broadcast_to @item, {comment: @comment, user: @comment.user}
+      CommentsChannel.broadcast_to @item, {comment: @comment, user: @comment.user, item: @item}
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:comment_id])
+    if @comment.destroy
+      ActionCable.server.broadcast 'delete_comment_channel', comment: @comment
+    else
+      redirect_to item_path(@comment.item_id)
     end
   end
 

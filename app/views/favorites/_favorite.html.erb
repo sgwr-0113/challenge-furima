@@ -1,0 +1,11 @@
+<% if !Favorite.exists?(user_id: current_user.id, item_id: item.id) %>
+  <%= link_to item_favorites_path(item_id: item.id), method: :post, remote: true, class: "favorite-btn"  do %>
+    <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    <span>お気に入り <%= favorites_count %></span>
+  <% end %>
+<% else %>
+  <%= link_to item_favorites_path(item_id: @item.id), method: :delete, remote: true, class: "favorite-btn"  do %>
+    <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    <span>お気に入り <%= favorites_count %></span>
+  <% end %>
+<% end %>

@@ -1,15 +1,3 @@
-#card-wrapper{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#card-detail__user-name{
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 2rem 0;
-}
-
 #new-card-link{
   width: 25rem;
   text-align: center;

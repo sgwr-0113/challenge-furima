@@ -9,11 +9,14 @@ Rails.application.routes.draw do
     post 'users/create_address_preset', to: 'users/registrations#create_address_preset'
   end
 
+  resources :users, only: [:show]
+
   root to: 'items#index'
   resources :tags, only: [:index]
   resources :items do
     resources :orders, only: [:index, :create]
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
     
     collection do
       get 'search'
@@ -24,5 +27,9 @@ Rails.application.routes.draw do
       post :purchase
     end
   end
+  # resources :comments, only: [:destroy]
   resources :cards, only: [:index, :new, :create, :destroy]
+
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
 end

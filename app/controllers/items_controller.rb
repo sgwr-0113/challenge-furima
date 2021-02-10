@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+    @favorites_count = Favorite.where(item_id: @item.id).count
   end
 
   def edit
@@ -135,5 +136,9 @@ class ItemsController < ApplicationController
   ## ユーザーがカードを登録していないならカードの登録ページにリダイレクト
   def current_user_has_not_card
     redirect_to new_card_path, alert: "クレジットカードが登録されていません" unless current_user.card.present?
+  end
+
+  def favorites_count
+    
   end
 end

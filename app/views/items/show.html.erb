@@ -52,7 +52,7 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= @item.user.nickname %></td>
+          <td class="detail-value"><%= link_to "#{@item.user.nickname}", user_path(@item.user.id) %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
@@ -81,10 +81,9 @@
       </tbody>
     </table>
     <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
+    <div id="fav">
+      <%= render "favorites/favorite", item: @item, favorites_count: @favorites_count %>
+    </div>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
         <span>不適切な商品の通報</span>
@@ -93,8 +92,10 @@
     <div class='comments-container'>
       <h3>コメント一覧</h3>
       <div id="comments">
-        <% @comments.each do |comment| %>   
-          <p class="comment"><%= comment.user.nickname %>：  <%= comment.text %></p>
+        <% @comments.each do |comment| %> 
+          <div id="comment_<%= comment.id %>">  
+            <p class="comment"><%= comment.user.nickname %>：  <%= comment.text %>　　<%= link_to "削除", item_comment_path(item_id: @item.id, comment_id: comment.id), method: :delete, class: "delete-comment-btn" %></p>
+          </div>
         <% end %>
       </div>
     </div>
@@ -114,20 +115,8 @@
         <span>コメントする<span>
       <% end %>
     <% end %>
-    
-    <%# <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <%# <span>コメントする<span>
-      </button>
-    </form> %>
   </div>
+  
   <div class="links">
     <div class="link-left">
       <% if @item.next.present? %>
@@ -144,3 +133,4 @@
 </div>
 
 <%= render "shared/footer" %>
+

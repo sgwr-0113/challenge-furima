@@ -1,0 +1,4 @@
+const comment = document.getElementById("comment_<%= @comment.id %>");
+console.log(comment);
+const html = "<%= link_to "削除", item_comment_path(item_id: @item.id, comment_id: @comment.id), method: :delete, class: "delete-comment-btn" %>"
+comment.insertAdjacentHTML('beforeend', html);

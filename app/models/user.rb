@@ -23,6 +23,10 @@ class User < ApplicationRecord
   has_one :card, dependent: :destroy
   has_one :address_preset
   has_many :sns_credentials
+  has_many :favorites, dependent: :destroy
+  has_many :items, through: :favorites
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   # 最終的にuserのインスタンスを返すクラスメソッド
   # SNSと同emailのユーザが存在すればそのユーザを返す。いなければuserを作成し返す。

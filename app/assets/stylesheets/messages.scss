@@ -1,0 +1,63 @@
+.dm-wrapper{
+  width: 60vw;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.dm-title{
+  font-size: 30px;
+  text-align: center;
+}
+
+#messages{
+  margin: 20px 0;
+  background-color:blanchedalmond;
+  padding: 30px;
+}
+
+.mine {
+  text-align: right;
+  margin-bottom: 4px;
+}
+
+.my-message{
+  background-color: white;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 7px;
+}
+
+.his {
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.his-message{
+  background-color: greenyellow;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 7px;
+}
+
+#default-message{
+  text-align: center;
+}
+
+.message-form{
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-content-field{
+  width: 87%;
+  padding: 8px;
+}
+
+#message-send-btn{
+  display: inline-block;
+  text-align: center;
+  width: 12%;
+  color: white;
+  background-color: #3ccace;
+  border-radius: 7px;
+}

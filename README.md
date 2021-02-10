@@ -61,3 +61,16 @@
 
 ### Association
 * belongs_to :order
+
+
+
+
+## favorites
+| Column | Type | Options |
+|--------|------|---------|
+| user_id(FK) | references | foreign_key: true |
+| item_id(FK) | references | foreign_key: true |
+
+### Association
+* belongs_to :user
+* belongs_to :item
