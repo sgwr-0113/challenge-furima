@@ -137,8 +137,4 @@ class ItemsController < ApplicationController
   def current_user_has_not_card
     redirect_to new_card_path, alert: "クレジットカードが登録されていません" unless current_user.card.present?
   end
-
-  def favorites_count
-    
-  end
 end

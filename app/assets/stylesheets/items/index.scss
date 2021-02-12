@@ -213,6 +213,13 @@ a {
 
 /* //FURIMAの特徴 */
 
+.furimar-contents{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 5vh 15vw;
+}
+
 /* 商品一覧 */
 
 .item-contents {

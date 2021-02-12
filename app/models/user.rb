@@ -28,6 +28,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
+  has_one :membership
+
   # 最終的にuserのインスタンスを返すクラスメソッド
   # SNSと同emailのユーザが存在すればそのユーザを返す。いなければuserを作成し返す。
   def self.from_sns_credential(sns, auth)
