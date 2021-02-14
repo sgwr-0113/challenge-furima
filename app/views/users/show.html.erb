@@ -27,6 +27,16 @@
       <div class="detail-title">
         ユーザー情報
       </div>
+      <div class="detail-info">
+      <ul>
+        <li>氏名：<%= current_user.first_name %> <%= current_user.last_name%>（<%= current_user.first_name_kana %> <%= current_user.last_name_kana %>）</li>
+        <li>生年月日：<%= current_user.birth_date.strftime("%Y年%m月%d日") %></li>
+        <li>購入商品数：<%= current_user.orders.count %></li>
+        <li>購入総額：<%= @bought_items.all.sum(:price).to_i.to_s(:delimited) %> 円</li>  <%# float型で算出された合計金額を整数に丸めたのち文字列化 %>
+      </ul>
+
+
+      </div>
     </div>
     <% if @user.id == current_user.id %>
     <div id="card-wrapper">

@@ -21,6 +21,9 @@ class UsersController < ApplicationController
       end
     end
 
+    ## 購入履歴
+    @bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: @user.id}) # itemsとordersテーブルを結合し、user_idが指定のユーザーと合致するレコードのみを取得
+
     ## カードが登録されていないならここで終了
     return unless current_user.card.present?
     Payjp.api_key = ENV["PAYJP_SK"] # 環境変数を読み込む

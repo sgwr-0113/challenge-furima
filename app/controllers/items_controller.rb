@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
 
   def purchase_confirm
     @address = Address.new
+    @m = current_user.membership
   end
 
   def purchase

@@ -1,3 +1,22 @@
-// Place all the styles related to the memberships controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.img-wrap{
+  display: flex;
+}
+
+#preview{
+  width: 150px;
+  height: 150px;
+  background-color: lightgray;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  text-align: center;
+  color: grey;
+}
+
+.resize-image{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
