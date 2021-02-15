@@ -5,6 +5,7 @@
 #user-header{
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 #user-name{
@@ -15,6 +16,11 @@
 
 #user-dm{
 
+}
+
+#user-membership{
+  display: flex;
+  align-items: center;
 }
 
 #profile-wrapper{
@@ -55,4 +61,16 @@
   border-radius: 100px;
   margin-left: 30px;
   text-align: center;
+}
+
+.rank{
+  text-align: center;
+  margin-right: 5px;
+}
+
+.membership-image{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-left: 10px;
 }

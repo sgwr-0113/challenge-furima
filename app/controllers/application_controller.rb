@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def total_pay(user)
+    bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: user.id}) 
+    bought_items.all.sum(:price).to_i
+  end
+
   private
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|

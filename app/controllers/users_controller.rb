@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   
   def show
-    @items = current_user.items
+    ## お気に入り一覧
     favorites = Favorite.where(user_id: current_user.id).pluck(:item_id)  # ログイン中のユーザーのお気に入りのitem_idカラムを取得
     @favorite_items = Item.find(favorites)     # itemsテーブルから、お気に入り登録済みのレコードを取得
 
@@ -21,8 +21,10 @@ class UsersController < ApplicationController
       end
     end
 
-    ## 購入履歴
-    @bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: @user.id}) # itemsとordersテーブルを結合し、user_idが指定のユーザーと合致するレコードのみを取得
+    @total_pay=total_pay(@user)
+    ## 売買履歴
+    @sold_items = Item.joins(:order).select('items.*, items.user_id').where(items: {user_id: @user.id}) # itemsとordersテーブルを結合し、items側user_idが指定のユーザーと合致するレコードのみを取得
+    @bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: @user.id}) # itemsとordersテーブルを結合し、orders側のuser_idが指定のユーザーと合致するレコードのみを取得
 
     ## カードが登録されていないならここで終了
     return unless current_user.card.present?

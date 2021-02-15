@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :select_item, only: [:index, :create]
   before_action :authenticate_user!, only: [:index]
+  before_action :select_item, only: [:index, :create]
+  before_action :set_membership, only: [:index, :create]
 
   def index
     return redirect_to root_path if current_user.id == select_item.user_id || select_item.order
-    @m = current_user.membership
   end
 
   def create
@@ -12,6 +12,9 @@ class OrdersController < ApplicationController
     if @order_address.valid?
       pay_item
       @order_address.save
+      if total_pay(current_user) >= 30000 && @m.rank == 0
+        @m.update(rank: 1)
+      end
       return redirect_to root_path
     else
       render 'index'
@@ -35,5 +38,9 @@ class OrdersController < ApplicationController
 
   def select_item
     @item = Item.find(params[:item_id])
+  end
+
+  def set_membership
+    @m = current_user.membership
   end
 end
