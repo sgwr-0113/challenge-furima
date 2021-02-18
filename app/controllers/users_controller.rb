@@ -21,7 +21,9 @@ class UsersController < ApplicationController
       end
     end
 
-    @total_pay=total_pay(@user)
+    @m = @user.membership
+
+    @total_pay=total_payment(@user)
     ## 売買履歴
     @sold_items = Item.joins(:order).select('items.*, items.user_id').where(items: {user_id: @user.id}) # itemsとordersテーブルを結合し、items側user_idが指定のユーザーと合致するレコードのみを取得
     @bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: @user.id}) # itemsとordersテーブルを結合し、orders側のuser_idが指定のユーザーと合致するレコードのみを取得

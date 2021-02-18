@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_021405) do
     t.string "addresses", null: false
     t.string "building"
     t.string "phone_number", null: false
-    t.integer "rank", default: 0, null: false
+    t.integer "rank_id", default: 0, null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

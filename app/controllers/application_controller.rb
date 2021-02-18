@@ -2,9 +2,14 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def total_pay(user)
+  def total_payment(user)
     bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: user.id}) 
     bought_items.all.sum(:price).to_i
+  end
+
+  def total_sales(user)
+    sold_items = Item.joins(:order).select('items.*, items.user_id').where(items: {user_id: user.id})
+    sold_items.all.sum(:price).to_i
   end
 
   private

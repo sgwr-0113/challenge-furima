@@ -2,6 +2,9 @@ class Membership < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :rank
+
   with_options presence: true do
     validates :image
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Input correctly" }

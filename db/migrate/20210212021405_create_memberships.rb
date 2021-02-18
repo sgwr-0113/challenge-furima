@@ -8,7 +8,7 @@ class CreateMemberships < ActiveRecord::Migration[6.0]
       t.string :addresses, null: false
       t.string :building
       t.string :phone_number, null: false
-      t.integer :rank, null: false, default: 0
+      t.integer :rank_id, null: false, default: 0
       t.references :user, foreign_key: true
       t.timestamps
     end

@@ -12,8 +12,12 @@ class OrdersController < ApplicationController
     if @order_address.valid?
       pay_item
       @order_address.save
-      if total_pay(current_user) >= 30000 && @m.rank == 0
-        @m.update(rank: 1)
+      if total_payment(current_user).between?(30000, 49999) && @m.rank_id == 0
+        @m.update(rank_id: 1)
+      elsif total_payment(current_user).between?(50000, 99999) && @m.rank_id <= 1
+        @m.update(rank_id: 2)
+      elsif total_payment(current_user) >= 100000 && @m.rank_id <= 2
+        @m.update(rank_id: 3)
       end
       return redirect_to root_path
     else

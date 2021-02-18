@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const itemForm = document.querySelector(".items-sell-main");
   // 商品出品・編集のフォームがないなら実行せずここで終了
   if (!itemForm) return null;
-  console.log("preview.js");
 
   const image_limits = 5;
 

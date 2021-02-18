@@ -20,11 +20,11 @@
         <% end %>
       <% end %>
     </div>
-    <% if @user.membership %>
+    <% if @m %>
       <div id="user-membership">
-      <div class="rank"><small>フリマーランク</small><br>ブロンズ</div>
-      <%= image_tag "rank-bronze.png" %>
-      <%= image_tag current_user.membership.image, class:"membership-image" %>
+      <div class="rank"><small>フリマーランク</small><br><%= @m.rank.name %></div>
+      <%= image_tag @m.rank.image %>
+      <%= image_tag @m.image, class:"membership-image" %>
       </div>
     <% end %>
   </div>
