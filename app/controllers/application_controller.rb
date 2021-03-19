@@ -3,12 +3,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def total_payment(user)
-    bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: user.id}) 
+    bought_items = Item.joins(:order).select('items.*, orders.user_id').where(orders: {user_id: user.id}) # itemsとordersテーブルを結合し、orders側のuser_idが指定のユーザーと合致するレコードのみを取得
     bought_items.all.sum(:price).to_i
   end
 
   def total_sales(user)
-    sold_items = Item.joins(:order).select('items.*, items.user_id').where(items: {user_id: user.id})
+    sold_items = Item.joins(:order).select('items.*, items.user_id').where(items: {user_id: user.id}) # itemsとordersテーブルを結合し、items側user_idが指定のユーザーと合致するレコードのみを取得
     sold_items.all.sum(:price).to_i
   end
 

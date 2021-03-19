@@ -39,8 +39,7 @@
         <li>氏名：<%= @user.first_name %> <%= @user.last_name%>（<%= @user.first_name_kana %> <%= @user.last_name_kana %>）</li>
         <li>生年月日：<%= @user.birth_date.strftime("%Y年%m月%d日") %></li>
         <li>購入商品数：<%= @user.orders.count %></li>
-        <li>売上総額：<%= @sold_items.all.sum(:price).to_i.to_s(:delimited) %> 円</li>
-        <li>購入総額：<%= @bought_items.all.sum(:price).to_i.to_s(:delimited) %> 円</li>  <%# float型で算出された合計金額を整数に丸めたのち文字列化 %>
+        <li>売上総額：<%= @total_sales.to_s(:delimited) %> 円</li>
         <li>購入総額：<%= @total_pay.to_s(:delimited) %> 円</li>
       </ul>
 

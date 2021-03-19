@@ -9,6 +9,13 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     if @membership.valid?
+      if total_payment(current_user).between?(30000, 49999)
+        @membership.rank_id = 1
+      elsif total_payment(current_user).between?(50000, 99999)
+        @membership.rank_id = 2
+      elsif total_payment(current_user) >= 100000
+        @membership.rank_id = 3
+      end
       @membership.save
       redirect_to root_path
     else
