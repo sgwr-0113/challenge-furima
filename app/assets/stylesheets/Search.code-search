@@ -1,0 +1,213 @@
+# Query: FURIMA
+# ContextLines: 1
+
+59 件の結果 - 19 ファイル
+
+package.json:
+  1  {
+  2:   "name": "challenge_furima",
+  3    "private": true,
+
+app/assets/stylesheets/items/index.scss:
+   79  
+   80: /* FURIMAが選ばれる3つの理由部分 */
+   81  .select-reason-contents {
+
+  219  
+  220: /* //FURIMAが選ばれる3つの理由部分 */
+  221  
+
+  225    width: 100vw;
+  226:   background-image: image-url('furima-header02.png');
+  227    background-size: cover;
+
+  264  
+  265: /* FURIMAの特徴 */
+  266  .feature-contents {
+
+  337  
+  338: /* //FURIMAの特徴 */
+  339  
+  340: .furimar-contents{
+  341    width: 100vw;
+
+app/assets/stylesheets/shared/footer.scss:
+   5    width: 100vw;
+   6:   background-image: image-url('furima-footer.png');
+   7    background-size: cover;
+
+  44  
+  45: .furima-details {
+  46    margin: 0 4vw;
+
+app/assets/stylesheets/shared/header.css:
+  17  
+  18: .furima-icon {
+  19    width: 10vw;
+
+app/views/devise/registrations/create_address_preset.html.erb:
+  6  
+  7:   <%= link_to 'Neighborhoodの利用を始める', root_path, class:"item-red-btn", id: "user-registration-complete-root-btn" %>
+  8  
+
+app/views/devise/registrations/new.html.erb:
+  21      </div>
+  22:     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) Neighbor太郎", maxlength:"40" %>
+  23    </div>
+
+app/views/items/_form.html.erb:
+    2    <header class="items-sell-header">
+    3:     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    4  
+
+  163      </ul>
+  164:     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+  165      <p class="inc">
+  166:       ©︎Furima,Inc.
+  167      </p>
+
+app/views/items/index.html.erb:
+    7  
+    8:   <%# FURIMAが選ばれる3つの理由部分 %>
+    9    <div class='select-reason-contents'>
+   10      <h2 class='title'>
+   11:       Neighborhoodが選ばれる3つの理由
+   12      </h2>
+
+   15          <div class='list-left'>
+   16:           <%= image_tag "furima-intro01.png", class:"list-pict" %>
+   17            <span class='reason-list-number'>1</span>
+
+   30          <div class='list-left'>
+   31:           <%= image_tag "furima-intro02.png", class:"list-pict" %>
+   32            <span class='reason-list-number'>2</span>
+
+   45          <div class='list-left'>
+   46:           <%= image_tag "furima-intro03.png", class:"list-pict" %>
+   47            <span class='reason-list-number'>3</span>
+
+   60    </div>
+   61:   <%# /FURIMAが選ばれる3つの理由部分 %>
+   62  
+
+   68      <p class='ad-explain'>
+   69:       Neighborhoodは、フリマアプリで最も人気。
+   70      </p>
+
+   83  
+   84:   <%# FURIMAの特徴 %>
+   85    <div class='feature-contents'>
+   86      <h2 class='title'>
+   87:       FURIMAの特徴
+   88      </h2>
+
+   90        <li class='list'>
+   91:         <%= image_tag "furima-intro04.png", class:"list-pict" %>
+   92          <h3 class='feature-list-text'>
+
+   99        <li class='list'>
+  100:         <%= image_tag "furima-intro05.png", class:"list-pict" %>
+  101          <h3 class='feature-list-text'>
+
+  108        <li class='list'>
+  109:         <%= image_tag "furima-intro06.png", class:"list-pict" %>
+  110          <h3 class='feature-list-text'>
+
+  118    </div>
+  119:   <%# /FURIMAの特徴 %>
+  120:   <div class="furimar-contents">
+  121      <%= link_to 'ネイバーとして登録する', new_membership_path, class:"item-red-btn"%>
+
+app/views/layouts/application.html.erb:
+  4  <head>
+  5:   <title>Neighborhood</title>
+  6    <%= csrf_meta_tags %>
+
+app/views/memberships/new.html.erb:
+  29      </div>
+  30:     <%= f.text_area :appeal, class:"input-default", id:"postal-code", placeholder:"例）ネイバー歴5年の専業主婦です。交渉応じます！", maxlength:"500" %>
+  31    </div>
+
+app/views/shared/_footer.html.erb:
+  17    <div class='footer-contents'>
+  18:     <div class='furima-details'>
+  19:       <h2 class='footer-content-head'>Neighborhoodについて</h2>
+  20        <ul>
+
+  22          <li><%= link_to 'プライバシーポリシー', "#", class: "footer-link" %></li>
+  23:         <li><%= link_to 'Neighborhood利用規約', "#", class: "footer-link" %></li>
+  24          <li><%= link_to 'ポイントに関する特約', "#", class: "footer-link" %></li>
+
+  26      </div>
+  27:     <div class='furima-details'>
+  28:       <h2 class='footer-content-head'>Neighborhoodを見る</h2>
+  29        <ul>
+
+  33      </div>
+  34:     <div class='furima-details'>
+  35:       <h2 class='footer-content-head'>Neighborhoodについて</h2>
+  36        <ul>
+  37:         <li><%= link_to 'Neighborhoodガイド', "#", class: "footer-link" %></li>
+  38:         <li><%= link_to 'Neighborhoodロゴ利用ガイドライン', "#", class: "footer-link" %></li>
+  39          <li><%= link_to 'お知らせ', "#", class: "footer-link" %></li>
+
+  42    </div>
+  43:   <%= link_to image_tag("furima-logo-white.png", class:"logo-white"), "#" %>
+  44:   <p>© Neighborhood</p>
+  45  </div>
+
+app/views/shared/_header.html.erb:
+  3    <div class='search-bar-contents'>
+  4:     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+  5      <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
+
+app/views/shared/_second-footer.html.erb:
+  3      <p class='second-fotter-text'>プライバシーポリシー</p>
+  4:     <p class='second-fotter-text'>Neighborhood利用規約</p>
+  5      <p class='second-fotter-text'>特定商取引に関する表記</p>
+  6    </div>
+  7:   <%= image_tag "furima-logo-color.png", class:"second-fotter-logo"%>
+  8  </footer>
+
+app/views/shared/_second-header.html.erb:
+  1  <header class='second-header'>
+  2:   <%= link_to image_tag("furima-logo-color.png", class:"second-logo"), "/" %>
+  3  </header>
+
+config/application.rb:
+  8  
+  9: module ChallengeFurima
+  10    class Application < Rails::Application
+
+config/cable.yml:
+   9    url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  10:   channel_prefix: challenge_furima_production
+
+config/database.yml:
+  21    <<: *default
+  22:   database: challenge_furima_development
+  23  
+
+  28    <<: *default
+  29:   database: challenge_furima_test
+  30  
+
+  51    <<: *default
+  52:   database: challenge_furima_production
+  53:   username: challenge_furima
+  54:   password: <%= ENV['CHALLENGE_FURIMA_DATABASE_PASSWORD'] %>
+
+config/storage.yml:
+  13    region: ap-northeast-1
+  14:   bucket: challenge-furima
+  15  
+
+config/environments/production.rb:
+  41    ActionCable.server.config.disable_request_forgery_protection = true
+  42:   config.action_cable.url = "wss://challenge-furima.herokuapp.com/cable" 
+  43:   config.action_cable.allowed_request_origins = ['https://challenge-furima.herokuapp.com', 'http://challenge-furima.herokuapp.com']
+  44  
+
+  59    # config.active_job.queue_adapter     = :resque
+  60:   # config.active_job.queue_name_prefix = "challenge_furima_production"
+  61  
