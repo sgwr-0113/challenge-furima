@@ -15,7 +15,9 @@ if(location.pathname.match(/items/) && location.pathname.match(/\d+/)){
 
     received(data) {
       console.log(data);
-      const html = `<p class="comment">${data.user.nickname}：  ${data.comment.text}　　<a class="delete-comment-btn" data-method="delete" href="/items/${data.item.id}/comments/${data.comment.id}">削除</a></p>`;
+      const html = `<div id="comment_${data.comment.id}">
+                      <p class="comment">${data.user.nickname}：  ${data.comment.text}　　<a class="delete-comment-btn" data-method="delete" href="/items/${data.item.id}/comments/${data.comment.id}">削除</a></p>
+                    </div>`;
       const comments = document.getElementById('comments');
       const newComment = document.getElementById('comment_text');
       comments.insertAdjacentHTML('afterend', html);

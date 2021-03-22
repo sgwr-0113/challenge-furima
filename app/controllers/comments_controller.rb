@@ -8,7 +8,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:comment_id])
+    if params[:comment_id]
+      @comment = Comment.find(params[:comment_id]) # 同期通信後
+    else
+      @comment = Comment.find(params[:id])         # 非同期通信後
+    end
     if @comment.destroy
       ActionCable.server.broadcast 'delete_comment_channel', comment: @comment
     else
