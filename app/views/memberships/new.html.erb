@@ -1,39 +1,39 @@
 <%= render "shared/header" %>
-
-<%= form_with model: @membership, id: 'membership-form', class: 'transaction-form-wrap',local: true do |f| %>
-  <%= render 'shared/error_messages', model: f.object %>
-  <div class='shipping-address-form'>
-    <h1 class='info-input-haedline'>
-      会員情報登録
-    </h1>
-  <div class="form-group">
+<div class="membership-area">
+  <%= form_with model: @membership, id: 'membership-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <div class='shipping-address-form'>
+      <h1 class='info-input-haedline'>
+        ネイバー会員情報登録
+      </h1>
+    <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">プロフィール画像</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%# プレビュー画像 %>
+        <div class="img-wrap">
+          <div class="click-upload">
+            <p>
+              クリックしてファイルをアップロード
+            </p>
+            <%= f.file_field :image, id:"profile-image" %>
+          </div>
+          <div id="preview"><p>正方形の画像を<br>使用してください</p></div>
+        </div>
+      </div>
+    <div class="form-group">
       <div class='form-text-wrap'>
-        <label class="form-text">プロフィール画像</label>
+        <label class="form-text">自己紹介</label>
         <span class="indispensable">必須</span>
       </div>
-      <%# プレビュー画像 %>
-      <div class="img-wrap">
-        <div class="click-upload">
-          <p>
-            クリックしてファイルをアップロード
-          </p>
-          <%= f.file_field :image, id:"profile-image" %>
-        </div>
-        <div id="preview"><p>正方形の画像を<br>使用してください</p></div>
-      </div>
+      <%= f.text_area :appeal, class:"input-default", id:"postal-code", placeholder:"例）Neighborhood歴5年の専業主婦です。交渉応じます！", maxlength:"500" %>
     </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">自己紹介</label>
-      <span class="indispensable">必須</span>
+      <%= render "orders/address_form", f: f, m: @m%>
     </div>
-    <%= f.text_area :appeal, class:"input-default", id:"postal-code", placeholder:"例）Neighborhood歴5年の専業主婦です。交渉応じます！", maxlength:"500" %>
-  </div>
-    <%= render "orders/address_form", f: f, m: @m%>
-  </div>
-  <div class='buy-btn'>
-    <%= f.submit "登録" ,class:"buy-red-btn" %>
-  </div>
-<% end %>
-
+    <div class='buy-btn'>
+      <%= f.submit "登録" ,class:"buy-red-btn" %>
+    </div>
+  <% end %>
+</div>
 <%= render "shared/footer" %>

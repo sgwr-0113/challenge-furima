@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  before_action :authenticate_user!
   before_action :already, only: [:new, :create]
 
   def new
