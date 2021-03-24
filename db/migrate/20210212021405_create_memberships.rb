@@ -3,7 +3,7 @@ class CreateMemberships < ActiveRecord::Migration[6.0]
     create_table :memberships do |t|
       t.text :appeal
       t.string :postal_code, null: false
-      t.integer :prefecture, null: false
+      t.integer :prefecture_id, null: false
       t.string :city, null:false
       t.string :addresses, null: false
       t.string :building

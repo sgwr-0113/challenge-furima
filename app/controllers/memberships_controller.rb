@@ -26,7 +26,7 @@ class MembershipsController < ApplicationController
 
   private
   def membership_params
-    params.require(:membership).permit(:image, :appeal, :postal_code, :prefecture, :city, :addresses, :building, :phone_number).merge(user_id: current_user.id)
+    params.require(:membership).permit(:image, :appeal, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number).merge(user_id: current_user.id)
   end
 
   def already

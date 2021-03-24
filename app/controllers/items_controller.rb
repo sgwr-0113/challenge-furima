@@ -112,7 +112,7 @@ class ItemsController < ApplicationController
   def address_params
     params.permit(
       :postal_code,
-      :prefecture,
+      :prefecture_id,
       :city,
       :addresses,
       :building,

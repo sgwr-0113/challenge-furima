@@ -1,0 +1,64 @@
+<% if m %>
+  <div class='shipping-address-form', style="display:none">
+    <%= render "orders/address_form", f: f , m: m %>
+  </div>
+  <div id="registered-address">
+  <h1 class='info-input-haedline'>
+    登録住所情報
+  </h1>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">郵便番号</label>
+    </div>
+    <%= m.postal_code %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">都道府県</label>
+    </div>
+    <%= m.prefecture.name %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">市区町村</label>
+    </div>
+    <%= m.city %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">番地</label>
+    </div>
+    <%= m.addresses %>
+  </div>
+  <% unless m.building.blank? %>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">建物名</label>
+    </div>
+    <%= m.building %>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">電話番号</label>
+    </div>
+    <%= m.phone_number %>
+  </div>
+  </div>
+  <div class='buy-btn'>
+    <%= f.submit "この情報で購入" ,class:"buy-red-btn" %>
+  </div>
+  <div class='buy-btn'>
+    <div id="new-address-btn", class="buy-red-btn">新しく配送先を入力する</div>
+  </div>
+<% else %>
+  <div class='shipping-address-form'>
+    <h1 class='info-input-haedline'>
+      配送先入力
+    </h1>
+    <%= render "address_form", f: f , m: m %>
+  </div>
+  <div class='buy-btn'>
+    <%= f.submit "購入" ,class:"buy-red-btn" %>
+  </div>
+<% end %>
