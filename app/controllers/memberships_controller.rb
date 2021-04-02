@@ -18,6 +18,7 @@ class MembershipsController < ApplicationController
         @membership.rank_id = 3
       end
       @membership.save
+      NotificationMailer.send_confirm_to_user(@membership.user).deliver
       redirect_to root_path
     else
       render :new
