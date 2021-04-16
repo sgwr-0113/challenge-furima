@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
   # resources :comments, only: [:destroy]
   resources :cards, only: [:index, :new, :create, :destroy]
-
+  
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
   resources :memberships, only: [:new, :create]

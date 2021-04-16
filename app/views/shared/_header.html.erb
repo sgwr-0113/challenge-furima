@@ -5,7 +5,7 @@
     <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
       <%= f.text_field :name, placeholder: '商品名から探す', class: 'input-box' %>
       <br>
-      <%= f.label :submit, class: "search-button" do %>
+      <%= f.label :submit, class: "search-button" do %> <%# label を使って包み込むこともできる %>
         <%= image_tag "search.png", class:"search-icon" %>
         <%= f.submit :submit, id: "q_submit", style: "display: none;"%>
       <% end %>
